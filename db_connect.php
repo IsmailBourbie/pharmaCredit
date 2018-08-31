@@ -6,7 +6,7 @@ class Connection {
         static $db = null;
         if(is_null($db)) {
             try {
-                $db = new PDO("mysql:host=localhost;dbname=??", "root", "");
+                $db = new PDO("mysql:host=localhost;dbname=pharmcredit", "root", "");
             } catch (PDOExecption $e) {
                 echo $e->getMessage();
             }

@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,7 +40,15 @@
     <!-- Start add credit form -->
     <div class="main">
         <h3 class="text-center">Nouveau Crédit</h3>
-        <form>
+        <?php 
+            if(isset($_SESSION['errors'])) {
+                echo '<div class="alert alert-danger" role="alert">';
+                    foreach($_SESSION['errors'] as $err) {echo "* " . $err . "<br>";}
+                 echo '</div>';
+                 unset($_SESSION['errors']);
+                }
+                ?>
+        <form action="addCredit.php" method="post">
             <div class="input-group">
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
@@ -56,7 +65,7 @@
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                 </span>
-                <input type="number" name="payment" class="form-control next-input" placeholder="Montant versé">
+                <input type="text" name="payment" class="form-control next-input" placeholder="Montant versé">
             </div>
             <div class="input-group">
                 <span class="input-group-addon">
