@@ -1,0 +1,46 @@
+/* Edit bootstrap style start */
+
+nav.navbar-default {
+    border-radius: none;
+    background-color: #a1c45a;
+}
+
+nav.navbar-default .navbar-brand {
+    color: #ea4c4c;
+}
+
+.navbar-default .navbar-form {
+    width: 67%;
+}
+
+.navbar-form .form-group {
+    width: 100%;
+    padding-left: 160px;
+    padding-right: 110px;
+}
+
+.navbar-form .form-control {
+    width: 100%;
+    background-color: #fff9e0;
+}
+
+.navbar-default .navbar-nav>li>a,
+.navbar-default .navbar-nav>li>a {
+    color: #000;
+    font-size: 14px;
+}
+
+.navbar-default .navbar-nav>li>a:focus,
+.navbar-default .navbar-nav>li>a:hover {
+    background-color: #f1c550;
+}
+
+/* Edit bootstrap style end */
+
+
+
+
+/* For selected item in navbar */
+a.selected {
+    background-color: #f1c550 !important;
+}
