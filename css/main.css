@@ -1,7 +1,7 @@
 /* Edit bootstrap style start */
 
 nav.navbar-default {
-    border-radius: none;
+    border-radius: 0;
     background-color: #a1c45a;
 }
 
@@ -35,12 +35,73 @@ nav.navbar-default .navbar-brand {
     background-color: #f1c550;
 }
 
+.main form .input-group-addon {
+    background-color: #f1c550;
+    color: #ea4c4c;
+}
+
+.main form .form-control:focus {
+    border-color: #f1c550;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(241, 197, 80, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(241, 197, 80, 0.6);
+}
+
 /* Edit bootstrap style end */
 
+/* include my style start */
 
+body {
+    background-color: #fff9e0;
+}
 
+.main {
+    width: 50%;
+    margin: 80px auto;
+    padding: 10px 20px;
+    background-color: #FFF;
+    border: 1px solid #DDD;
+    border-radius: 8px;
+}
+
+.main>h3 {
+    margin-bottom: 40px;
+}
+
+.main>form>.input-group {
+    padding: 10px 30px;
+}
+
+.main>form>.row.form-btn {
+    padding: 10px 30px;
+}
+
+.main>form>.row.form-btn div input {
+    width: 100%;
+    padding: 4px;
+    background-color: transparent;
+    border: 1px solid #a1c45a;
+    border-radius: 5px;
+}
+
+.main>form>.row.form-btn div input.btn-reset {
+    border: 1px solid #ea4c4c;
+}
+
+.main>form>.row.form-btn div input.btn-submit:hover,
+.main>form>.row.form-btn div input.btn-submit:focus {
+    background-color: #a1c45a;
+}
+
+.main>form>.row.form-btn div input.btn-reset:hover,
+.main>form>.row.form-btn div input.btn-reset:focus {
+    background-color:  #ea4c4c;
+}
+
+/* include my style end */
 
 /* For selected item in navbar */
+
 a.selected {
     background-color: #f1c550 !important;
 }
