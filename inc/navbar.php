@@ -21,7 +21,10 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#" id="Crédits">Crédits</a>
+                    <a href="#" id="Crédits">Patients</a>
+                </li>
+                <li>
+                    <a href="#" id="Crédits">Statistiques</a>
                 </li>
             </ul>
         </div>

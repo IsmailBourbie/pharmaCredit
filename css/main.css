@@ -10,12 +10,12 @@ nav.navbar-default .navbar-brand {
 }
 
 .navbar-default .navbar-form {
-    width: 67%;
+    width: 65%;
 }
 
 .navbar-form .form-group {
     width: 100%;
-    padding-left: 160px;
+    padding-left: 100px;
     padding-right: 110px;
 }
 

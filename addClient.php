@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		if($count > 0) {
 			$_SESSION['errors'] = "Le nom dèjà existe";
 		} else {
-			$sql = 'INSERT INTO clients VALUES(?)';
+			$sql = 'INSERT INTO clients (nom) VALUES(?)';
 			$stmt = $db->prepare($sql);
 			if ($stmt->execute(array($name))){
 				$_SESSION['success'] = 'Le nom ajouté';
@@ -29,12 +29,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				header('Location: index.php');
 			};
 		}
-		die('error in add name');
 	}
 }
  ?>
 <div class="main">
         <h3 class="text-center">Nouveau Patient</h3>
+        <?php 
+            if(isset($_SESSION['errors'])) {
+                echo '<div class="alert alert-danger" role="alert">';
+            	echo $_SESSION['errors'];
+            	echo '</div>';
+                unset($_SESSION['errors']);
+                }
+                ?>
         <form class="reset-input" action="<?= $_SERVER['PHP_SELF']?>" method="post" autocomplete="off">
             <div class="input-group">
                 <span class="input-group-addon">

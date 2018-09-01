@@ -45,9 +45,12 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
         header('Location: index.php');
         exit();
     } else {
-        $sql = 'INSERT INTO credit (id, nom, credit_amount, notification, `current_date`) VALUES (
-        NULL, :name, :credit, :notif, CURRENT_TIMESTAMP)';
+        $sql = "UPDATE clients SET credit_amount = credit_amount + :credit ,
+                                   payroll_amount = payroll_amount + :payment 
+                                WHERE nom = :name;
+                INSERT INTO tracing VALUES(NULL, :name, :credit, :payment, :notif, CURRENT_TIMESTAMP)";
         $stmt = $db->prepare($sql);
+        $stmt->bindValue(':payment', $data['payment'], PDO::PARAM_STR);
         $stmt->bindValue(':name', $data['name'], PDO::PARAM_STR);
         $stmt->bindValue(':credit', $data['credit'], PDO::PARAM_STR);
         $stmt->bindValue(':notif', $data['notif'], PDO::PARAM_STR);

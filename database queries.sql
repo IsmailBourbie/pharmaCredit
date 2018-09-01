@@ -1,44 +1,20 @@
 --  drop tables if exists
 
-DROP TABLE IF EXISTS payment;
-DROP TABLE IF EXISTS credit;
+DROP TABLE IF EXISTS tracing;
 DROP TABLE IF EXISTS clients;
 
 CREATE TABLE clients (
-nom varchar(120) PRIMARY KEY
+nom varchar(120) PRIMARY KEY,
+credit_amount DOUBLE NOT NULL DEFAULT 0,
+payroll_amount DOUBLE NOT NULL DEFAULT 0
 );
 
-CREATE TABLE credit (
+CREATE TABLE tracing (
 id INT PRIMARY KEY AUTO_INCREMENT, 
 nom varchar(120) NOT NULL,
-credit_amount DOUBLE NOT NULL,
+credit_amount DOUBLE NULL,
+payroll_amount DOUBLE NULL,
 notification VARCHAR(255) NULL,
 `current_date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 FOREIGN KEY (nom) REFERENCES clients(nom)
 );
-
-CREATE TABLE payment (
-id INT PRIMARY KEY AUTO_INCREMENT,
-payroll_amount DOUBLE NOT NULL,
-nom varchar(120) NOT NULL,
-`current_date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-FOREIGN KEY (nom) REFERENCES clients(nom)
-);
-
-
-
--- SELECT
---     clients.*,
---     credit.credit_amount,
---     payment.payroll_amount,
---     payment.current_date
--- FROM
---     (
---         (
---             `clients`
---         INNER JOIN credit ON clients.nom = credit.nom
---         )
---     INNER JOIN payment ON clients.nom = payment.nom
---     )
--- WHERE
---     clients.nom = "fazoo"

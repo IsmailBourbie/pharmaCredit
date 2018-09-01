@@ -2,6 +2,7 @@
 session_start(); 
 include 'inc/head.php';
 $name = isset($_SESSION['name']) ? $_SESSION['name'] : "";
+unset($_SESSION['name']);
 if (isset($_SESSION['success'])) {
     echo '<div class="alert alert-success cusstom-alert">' . $_SESSION['success'] . '</div>';
     unset($_SESSION['success']);
