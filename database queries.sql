@@ -5,20 +5,20 @@ DROP TABLE IF EXISTS credit;
 DROP TABLE IF EXISTS clients;
 
 CREATE TABLE clients (
-nom varchar(120) PRIMARY KEY,
-notification varchar(255) NULL,
-`current_date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+nom varchar(120) PRIMARY KEY
 );
 
 CREATE TABLE credit (
+id INT PRIMARY KEY AUTO_INCREMENT, 
 nom varchar(120) NOT NULL,
 credit_amount DOUBLE NOT NULL,
-PRIMARY KEY(nom, credit_amount),
+notification VARCHAR(255) NULL,
 FOREIGN KEY (nom) REFERENCES clients(nom)
 );
 
 CREATE TABLE payment (
-payroll_amount DOUBLE PRIMARY KEY,
+id INT PRIMARY KEY AUTO_INCREMENT,
+payroll_amount DOUBLE NOT NULL,
 nom varchar(120) NOT NULL,
 `current_date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 FOREIGN KEY (nom) REFERENCES clients(nom)

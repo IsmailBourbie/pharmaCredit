@@ -48,7 +48,7 @@
                  unset($_SESSION['errors']);
                 }
                 ?>
-        <form action="addCredit.php" method="post">
+        <form action="addCredit.php" method="post" autocomplete="off">
             <div class="input-group">
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
