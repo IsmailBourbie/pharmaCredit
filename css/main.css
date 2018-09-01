@@ -23,7 +23,13 @@ nav.navbar-default .navbar-brand {
     width: 100%;
     background-color: #fff9e0;
 }
-
+.navbar-nav>li>.dropdown-menu {
+    background-color: #a1c45a;
+}
+.navbar-nav>li>.dropdown-menu li>a:hover,
+.navbar-nav>li>.dropdown-menu li>a:focus {
+    background-color: #f1c550;
+}
 .navbar-default .navbar-nav>li>a,
 .navbar-default .navbar-nav>li>a {
     color: #000;
@@ -47,6 +53,11 @@ nav.navbar-default .navbar-brand {
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(241, 197, 80, 0.6);
 }
 
+.cusstom-alert {
+    width: 50%;
+    margin: auto;
+}
+
 /* Edit bootstrap style end */
 
 /* include my style start */
@@ -57,7 +68,7 @@ body {
 
 .main {
     width: 50%;
-    margin: 80px auto;
+    margin: 60px auto;
     padding: 10px 20px;
     background-color: #FFF;
     border: 1px solid #DDD;

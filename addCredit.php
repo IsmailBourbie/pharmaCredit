@@ -23,6 +23,16 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
     if(empty($data["name"])) {
         array_push($err, 'Nom incorrect ou vide!');
     } 
+
+    // search about the name
+    $sql = 'SELECT * FROM clients WHERE nom = ?';
+    $stmt = $db->prepare($sql);
+    $stmt->execute(array($data['name']));
+    $result = $stmt->fetch();
+    $count = $stmt->rowCount();
+    if($count == 0) {
+        array_push($err, 'Le Nom ne existe pas');
+    }
     if ($data['credit'] === false) {
         array_push($err, 'Credit incorrect ou vide!');
     }
@@ -31,11 +41,20 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
     }
     
     if(!empty($err)) {
-        $_SESSION['errors'] = $err;
+        $_SESSION['errors_add_credit'] = $err;
         header('Location: index.php');
         exit();
     } else {
-        var_dump($data);
+        $sql = 'INSERT INTO credit (id, nom, credit_amount, notification, `current_date`) VALUES (
+        NULL, :name, :credit, :notif, CURRENT_TIMESTAMP)';
+        $stmt = $db->prepare($sql);
+        $stmt->bindValue(':name', $data['name'], PDO::PARAM_STR);
+        $stmt->bindValue(':credit', $data['credit'], PDO::PARAM_STR);
+        $stmt->bindValue(':notif', $data['notif'], PDO::PARAM_STR);
+        if ($stmt->execute()){
+            $_SESSION['success'] = 'Crédit ajouter';
+            header('Location: index.php');
+        };
     }
 
 } else {

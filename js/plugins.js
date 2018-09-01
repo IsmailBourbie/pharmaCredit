@@ -23,4 +23,12 @@ $(document).ready(function () {
             $(".next-input").eq(0).focus();
         }
     });
+
+    $('.reset-input, .next-input').keydown(function (e) {
+        // if the key is enter key 
+         if (e.which === 27) {
+            $(".btn-reset").trigger("click");
+            $(".next-input").eq(0).focus();
+        }
+    });
 });

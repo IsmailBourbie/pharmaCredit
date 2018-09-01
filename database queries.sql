@@ -13,6 +13,7 @@ id INT PRIMARY KEY AUTO_INCREMENT,
 nom varchar(120) NOT NULL,
 credit_amount DOUBLE NOT NULL,
 notification VARCHAR(255) NULL,
+`current_date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 FOREIGN KEY (nom) REFERENCES clients(nom)
 );
 
