@@ -1,4 +1,5 @@
 <?php session_start();
+$_SESSION['title'] = 'Nouveau';
 include 'inc/head.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require "db_connect.php";

@@ -1,5 +1,6 @@
 <?php
 session_start(); 
+$_SESSION['title'] = 'Nouveau';
 include 'inc/head.php';
 $name = isset($_SESSION['name']) ? $_SESSION['name'] : "";
 unset($_SESSION['name']);

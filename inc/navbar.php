@@ -6,9 +6,9 @@
             <a class="navbar-brand" href="#">Bourbie Pharm</a>
         </div>
         <div class="collapse navbar-collapse">
-            <form class="navbar-form navbar-left" action="" method="get">
+            <form action="patients.php" class="navbar-form navbar-left" action="" method="get">
                 <div class="form-group">
-                    <input type="text" name="search" class="form-control" placeholder="Search" autocomplete="off">
+                    <input type="text" name="q" class="form-control" placeholder="Search" autocomplete="off">
                 </div>
             </form>
             <ul class="nav navbar-nav navbar-right">
@@ -21,10 +21,10 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#" id="Crédits">Patients</a>
+                    <a href="#" id="Patients">Patients</a>
                 </li>
                 <li>
-                    <a href="#" id="Crédits">Statistiques</a>
+                    <a href="#" id="Statistiques">Statistiques</a>
                 </li>
             </ul>
         </div>
