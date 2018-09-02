@@ -57,7 +57,11 @@ nav.navbar-default .navbar-brand {
     width: 50%;
     margin: auto;
 }
-
+.table>tbody>tr>td,.table>tbody>tr>th,
+.table>tfoot>tr>td,.table>tfoot>tr>th,
+.table>thead>tr>td, .table>thead>tr>th {
+width: 1px;
+}
 /* Edit bootstrap style end */
 
 /* include my style start */

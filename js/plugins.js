@@ -31,4 +31,53 @@ $(document).ready(function () {
             $(".next-input").eq(0).focus();
         }
     });
+
+    // on click verser button
+    $('.verser-btn').on('click', function() {
+        var nom = $(this).parent().siblings('td').eq(0).text();
+        $('#patient_name').val(nom);
+    });
+    // on hide modal of verse hide the alert
+    $('#verser-modal').on('shown.bs.modal', function() {
+        $('#payroll_amount').focus();
+    });
+
+    // on show modal of verse set focus on input
+    $('#verser-modal').on('hidden.bs.modal', function() {
+        $(this).find('.alert').hide();
+    });
+
+    // use ajax to submit payroll
+    $('#confirm-payroll').click(function() {
+        var nom = $('#patient_name').val().trim(),
+            payroll_amount_input = $('#payroll_amount'),
+            modal_content = $(this).parent().parent('.modal-content');
+            if (payroll_amount_input.val().trim() === "") {
+                alert('Versement vide');
+                return false;
+            };
+        $.ajax({
+            url: 'patientAjax.php',
+            type: 'POST',
+            data: {'name': nom, 'payroll_amount': payroll_amount_input.val().trim()},
+            success: function(data) {
+                console.log(data);
+                modal_content.children('.modal-body').children('.alert').show();
+                payroll_amount_input.val('').focus();
+            }
+        });
+    });
+
+    // on click detail button
+    $('.detail-btn').on('click', function() {
+        var nom = $(this).parent().siblings('td').eq(0).text();
+        $.ajax({
+            url: 'patientAjax.php',
+            type: 'POST',
+            data: {'name': nom},
+            success: function(data) {
+                console.log(data);
+            }
+        });
+    });
 });

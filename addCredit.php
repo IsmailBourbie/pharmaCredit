@@ -9,7 +9,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
     $err = [];
 
     $data = [
-        'name' =>  filter_var(trim($_POST['name']), FILTER_SANITIZE_STRING),
+        'name' =>  filter_var(strtolower(trim($_POST['name'])), FILTER_SANITIZE_STRING),
         'credit' =>  filter_var(trim($_POST['credit']), FILTER_VALIDATE_FLOAT),
         'payment' =>  trim($_POST['payment']),
         'notif' =>  trim($_POST['notif'])

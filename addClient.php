@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require "db_connect.php";
 
     $db = Connection::getConnection();
-	$name = $_POST['name'];
+	$name = strtolower(trim($_POST['name']));
 	$error = "";
 	if (empty($name)) {
 		$$error = "Le nom ne peut pas etre vide";
