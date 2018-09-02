@@ -87,14 +87,33 @@ $patients = $stmt->fetchAll(PDO::FETCH_OBJ);
 
 <!-- Modal of detail -->
 <div class="modal fade" id="detail-modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">Modal title</h4>
       </div>
       <div class="modal-body">
-        <p>One fine body&hellip;</p>
+      	<div class="table-responsive">
+		 	<table class="table table-striped">
+		 		<thead class="text-center">
+		            <tr>
+		                <th>Crédit</th>
+		                <th>Payment</th>
+		                <th>date</th>
+		                <th>Notification</th>
+		            </tr>
+		        </thead>
+		        <tbody>
+		        	<tr>
+		        		<td>hello</td>
+		        		<td>hello</td>
+		        		<td>hello</td>
+		        		<td>hello</td>
+		        	</tr>
+	        	</tbody>
+	 		</table>	
+		</div>  
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

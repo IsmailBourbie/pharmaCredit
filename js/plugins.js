@@ -79,10 +79,12 @@ $(document).ready(function () {
     // on click detail button
     $('.detail-btn').on('click', function() {
         var nom = $(this).parent().siblings('td').eq(0).text();
+        console.log(nom);
         $.ajax({
             url: 'patientAjax.php',
             type: 'POST',
             data: {'name': nom},
+            dataType: 'json',
             success: function(data) {
                 console.log(data);
             }
