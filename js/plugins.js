@@ -37,21 +37,23 @@ $(document).ready(function () {
         var nom = $(this).parent().siblings('td').eq(0).text();
         $('#patient_name').val(nom);
     });
-    // on hide modal of verse hide the alert
+    // on show modal of verser set focus on input
     $('#verser-modal').on('shown.bs.modal', function() {
         $('#payroll_amount').focus();
     });
 
-    // on show modal of verse set focus on input
+    // on hide modal of verser hide alert
     $('#verser-modal').on('hidden.bs.modal', function() {
         $(this).find('.alert').hide();
     });
 
     // use ajax to submit payroll
-    $('#confirm-payroll').click(function() {
+    $('#confirm-payroll').click(function(e) {
         var nom = $('#patient_name').val().trim(),
             payroll_amount_input = $('#payroll_amount'),
-            modal_content = $(this).parent().parent('.modal-content');
+            form_parent = $(this).parent().parent('form');
+            e.preventDefault();
+            console.log(form_parent);
             if (payroll_amount_input.val().trim() === "") {
                 alert('Versement vide');
                 return false;
@@ -60,9 +62,15 @@ $(document).ready(function () {
             url: 'patientAjax.php',
             type: 'POST',
             data: {'name': nom, 'payroll_amount': payroll_amount_input.val().trim()},
+            dataType: 'json',
             success: function(data) {
-                console.log(data);
-                modal_content.children('.modal-body').children('.alert').show();
+                console.log(data.status);
+                if (data.status === 200) {
+                    form_parent.siblings('.alert').attr('class', 'alert alert-success').show();
+                } else{
+                    form_parent.siblings('.alert').attr('class', 'alert alert-danger')
+                                  .text("Something wrong try again!").show();
+                };
                 payroll_amount_input.val('').focus();
             }
         });

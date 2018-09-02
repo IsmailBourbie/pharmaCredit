@@ -75,11 +75,11 @@ $patients = $stmt->fetchAll(PDO::FETCH_OBJ);
 		    	</label>
 		        <input type="number" name="payroll_amount" class="form-control" id="payroll_amount">
 		      </div>
+		      <div class="modal-footer">
+			    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			    <button type="submit" id="confirm-payroll" class="btn btn-primary">Confirmer</button>
+		 	  </div>
 		    </form>
-		  </div>
-		  <div class="modal-footer">
-		    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		    <button type="button" id="confirm-payroll" class="btn btn-primary">Confirmer</button>
 		  </div>
 		</div>
 	</div>
