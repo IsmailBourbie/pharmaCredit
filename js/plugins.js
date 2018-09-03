@@ -78,15 +78,26 @@ $(document).ready(function () {
 
     // on click detail button
     $('.detail-btn').on('click', function() {
-        var nom = $(this).parent().siblings('td').eq(0).text();
-        console.log(nom);
+        var nom = $(this).parent().siblings('td').eq(0).text(),
+            detail_table_body = $($(this).attr('data-target')).find('tbody'),
+            i, j;
+        $('#span_name_patient').text(nom);
         $.ajax({
             url: 'patientAjax.php',
             type: 'POST',
             data: {'name': nom},
             dataType: 'json',
-            success: function(data) {
-                console.log(data);
+            success: function(response) {
+                var data = response.data;
+                detail_table_body.empty();
+                console.log(response.data);
+                for(i = 0; i < data.length; i += 1) {
+                    detail_table_body.append('<tr>');
+                    for (j = 0 ; j < 4; j += 1) {
+                        detail_table_body.children('tr').eq(i).append('<td>');
+                        detail_table_body.children('tr').eq(i).children('td').eq(j).text(data[i][j]);
+                    };
+                }
             }
         });
     });

@@ -27,10 +27,10 @@ if (isset($_POST['payroll_amount']) && isset($_POST['name'])) {
 	if (empty($name)) {
 		$response['status'] = 400;
 	} else {
-		$stmt = $db->prepare('SELECT * FROM tracing WHERE nom = :name');
+		$stmt = $db->prepare('SELECT credit_amount, payroll_amount, `current_date`, notification FROM tracing WHERE nom = :name');
 		$stmt->bindValue(':name', $name, PDO::PARAM_STR);
 		$stmt->execute();
-		$result = $stmt->fetchAll(PDO::FETCH_OBJ);
+		$result = $stmt->fetchAll(PDO::FETCH_NUM);
 		$count = $stmt->rowCount();
 		if ($count === 0) {
 			$response['status'] = 400;
