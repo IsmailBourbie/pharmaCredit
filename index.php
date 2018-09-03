@@ -1,7 +1,7 @@
 <?php
-session_start(); 
-$_SESSION['title'] = 'Nouveau';
-include 'inc/head.php';
+session_start();
+require 'config/config.php';
+require 'inc/head.php';
 $name = isset($_SESSION['name']) ? $_SESSION['name'] : "";
 unset($_SESSION['name']);
 if (isset($_SESSION['success'])) {

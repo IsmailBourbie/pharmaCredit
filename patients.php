@@ -1,5 +1,5 @@
 <?php session_start();
-$_SESSION['title'] = "Patients";
+require 'config/config.php';
 include 'inc/head.php';
 
 if (!isset($_GET['q']) || empty(trim($_GET['q']))) {

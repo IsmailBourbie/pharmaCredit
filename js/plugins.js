@@ -2,10 +2,6 @@
 
 $(document).ready(function () {
     "use strict";
-    // Add class selected to navbar
-    var page_title = document.title;
-    $("#" + page_title).addClass("selected");
-
     // go to next input with Entre key
     $('.next-input').keydown(function (e) {
         // if the key is enter key 
@@ -101,4 +97,29 @@ $(document).ready(function () {
             }
         });
     });
+
+    // buldin key shortcut
+
+    $(document).keydown(function(e) {
+        var evt = window.event ? event : e;
+        // ctrl + shift + r ==> go to search input
+        if (evt.keyCode === 82 && evt.ctrlKey && evt.shiftKey) {
+            evt.preventDefault();
+            $('#search-input').focus();
+
+            // ctrl + shift + p ==> go to add client page
+        } else if (evt.keyCode === 80 && evt.ctrlKey && evt.shiftKey) {
+            evt.preventDefault();
+            window.location.href = "addClient.php";
+
+            // ctrl + shift + t ==> go to add credit page
+        } else if (evt.keyCode === 76 && evt.ctrlKey && evt.shiftKey) {
+            evt.preventDefault();
+            window.location.href = "index.php";
+        };
+    });
+
+
+
+
 });
