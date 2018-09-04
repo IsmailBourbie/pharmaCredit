@@ -42,30 +42,28 @@ if ($stmt->execute()) {
 	  <!-- Tab panes -->
 	  <div class="tab-content">
 	    <div role="tabpanel" class="tab-pane active" id="general">
-	    	<ul>
-	    		<div class="table-responsive">
-	    			<table class="table general">
-	    				<tbody>
-	    					<tr>
-	    						<td class="h4">Nombre des clients</td>
-	    						<td><?=$general_stats->clients_num?></td>
-	    					</tr>
-	    					<tr>
-	    						<td class="h4">Crédit Totale</td>
-	    						<td><?=$general_stats->all_credit?></td>
-	    					</tr>
-	    					<tr>
-	    						<td class="h4">Reste Total</td>
-	    						<td><?=$general_stats->all_rest?></td>
-	    					</tr>
-	    				</tbody>
-	    			</table>
-	    		</div>
-	    	</ul>
+    		<div class="table-responsive">
+    			<table class="table general">
+    				<tbody>
+    					<tr>
+    						<td class="h4">Nombre des clients</td>
+    						<td><?=$general_stats->clients_num?></td>
+    					</tr>
+    					<tr>
+    						<td class="h4">Crédit Totale</td>
+    						<td><?=$general_stats->all_credit?></td>
+    					</tr>
+    					<tr>
+    						<td class="h4">Reste Total</td>
+    						<td><?=$general_stats->all_rest?></td>
+    					</tr>
+    				</tbody>
+    			</table>
+    		</div>
 	    </div>
 	    <div role="tabpanel" class="tab-pane" id="plus_credit">
 	    	<div class="table-responsive">
-	    			<table class="table">
+	    			<table class="table table-hover">
 	    				<thead>
 	    					<tr>
 	    						<th>Nom</th>
@@ -76,7 +74,7 @@ if ($stmt->execute()) {
 	    				</thead>
 	    				<tbody>
     					<?php foreach($top_rest as $r):?>
-    						<tr data-href="<?=URL_ROOT . 'patients.php?nom=' . $r->nom?>">
+    						<tr class="linked" data-href="<?=URL_ROOT . 'patients.php?q=' . $r->nom?>">
     							<td><?=$r->nom?></td>
     							<td><?=$r->credit_amount?></td>
     							<td><?=$r->payroll_amount?></td>
@@ -89,7 +87,7 @@ if ($stmt->execute()) {
 	    </div>
 	    <div role="tabpanel" class="tab-pane" id="list_noire">
 	    	<div class="table-responsive">
-	    			<table class="table">
+	    			<table class="table table-hover">
 	    				<thead>
 	    					<tr>
 	    						<th>Nom</th>
@@ -100,7 +98,7 @@ if ($stmt->execute()) {
 	    				</thead>
 	    				<tbody>
     					<?php foreach($more_100 as $r):?>
-    						<tr data-href="<?=URL_ROOT . 'patients.php?nom=' . $r->nom?>">
+    						<tr class="linked" data-href="<?=URL_ROOT . 'patients.php?q=' . $r->nom?>">
     							<td><?=$r->nom?></td>
     							<td><?=$r->credit_amount?></td>
     							<td><?=$r->payroll_amount?></td>

@@ -119,7 +119,11 @@ $(document).ready(function () {
         };
     });
 
+    // link rows of tables of stats
 
+    $('.linked').click(function() {
+        window.location.href = $(this).data('href');
+    });
 
 
 });

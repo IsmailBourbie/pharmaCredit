@@ -37,7 +37,7 @@ if (isset($_SESSION['success'])) {
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                 </span>
-                <input type="text" name="payment" class="form-control next-input" placeholder="Montant versé">
+                <input type="number" name="payment" class="form-control next-input" placeholder="Montant versé">
             </div>
             <div class="input-group">
                 <span class="input-group-addon">

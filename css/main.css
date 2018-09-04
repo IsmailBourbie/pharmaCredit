@@ -84,6 +84,10 @@ nav.navbar-default .navbar-brand {
     border: none;
     border-bottom: 1px solid #ddd;
 }
+.tab-pane .table-hover>tbody>tr:hover {
+    cursor: pointer;
+    background-color: #fff9e0;
+}
 /* Edit bootstrap style end */
 
 /* include my style start */
