@@ -63,6 +63,27 @@ nav.navbar-default .navbar-brand {
     max-height: 470px;
     overflow-y: auto;
 }
+.main-lg .tab-content {
+    padding: 20px 10px;
+}
+.nav-tabs>li>a {
+    color: #74ab05;
+}
+.nav>li>a:focus, .nav>li>a:hover {
+    text-decoration: none;
+    background-color: #f1c550;
+}
+.nav-tabs {
+    border-bottom: 1px solid #f1c550;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+    border: 1px solid #f1c550;
+    border-bottom-color: transparent;
+}
+.table.general>tbody>tr>td {
+    border: none;
+    border-bottom: 1px solid #ddd;
+}
 /* Edit bootstrap style end */
 
 /* include my style start */
@@ -71,13 +92,18 @@ body {
     background-color: #fff9e0;
 }
 
-.main {
-    width: 50%;
+.main, .main-lg {
     margin: 60px auto;
     padding: 10px 20px;
     background-color: #FFF;
     border: 1px solid #DDD;
     border-radius: 8px;
+}
+.main-lg {
+    width: 90%;
+}
+.main {
+    width: 50%;
 }
 
 .main>h3 {
