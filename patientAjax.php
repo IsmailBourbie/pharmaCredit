@@ -5,6 +5,7 @@ $db = Connection::getConnection();
 if (isset($_POST['payroll_amount']) && isset($_POST['name'])) {
 	$response['status'] = 200;
 	$name = strtolower(trim($_POST['name']));
+	$notif = trim($_POST['notif']);
 	$payroll_amount = filter_var(trim($_POST['payroll_amount']), FILTER_VALIDATE_FLOAT);
 	if (empty($name) || $payroll_amount === false) {
 		$response['status'] = 400;
@@ -24,10 +25,11 @@ if (isset($_POST['payroll_amount']) && isset($_POST['name'])) {
 		
 		$stmt = $db->prepare('UPDATE clients SET payroll_amount = payroll_amount + :pay 
 												WHERE nom = :name;
-								INSERT INTO tracing (id, nom, payroll_amount, `current_date`)
-								VALUES(NULL, :name, :pay, CURRENT_TIMESTAMP)');
+								INSERT INTO tracing (id, nom, payroll_amount, `notification`, `current_date`)
+								VALUES(NULL, :name, :pay, :notif, CURRENT_TIMESTAMP)');
 		$stmt->bindValue(':pay', $payroll_amount, PDO::PARAM_STR);
 		$stmt->bindValue(':name', $name, PDO::PARAM_STR);
+		$stmt->bindValue(':notif', $notif, PDO::PARAM_STR);
 		if ($stmt->execute() === false) {
 			$response['status'] = 400;
 		}
@@ -48,7 +50,7 @@ if (isset($_POST['payroll_amount']) && isset($_POST['name'])) {
 	if (empty($name)) {
 		$response['status'] = 400;
 	} else {
-		$stmt = $db->prepare('SELECT credit_amount, payroll_amount, `current_date`, notification FROM tracing WHERE nom = :name');
+		$stmt = $db->prepare('SELECT credit_amount, payroll_amount, notification, `current_date` FROM tracing WHERE nom = :name');
 		$stmt->bindValue(':name', $name, PDO::PARAM_STR);
 		$stmt->execute();
 		$result = $stmt->fetchAll(PDO::FETCH_NUM);

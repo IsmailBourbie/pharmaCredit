@@ -28,6 +28,12 @@ $(document).ready(function () {
         }
     });
 
+    $('#payroll_notif').keydown(function (e) {
+        // if the key is enter key 
+         if (e.which === 13) {
+            $("#confirm-payroll").trigger("click");
+        }
+    });
     // on click verser button
     $('.verser-btn').on('click', function() {
         var nom = $(this).parent().siblings('td').eq(0).text();
@@ -47,6 +53,7 @@ $(document).ready(function () {
     $('#confirm-payroll').click(function(e) {
         var nom = $('#patient_name').val().trim(),
             payroll_amount_input = $('#payroll_amount'),
+            payroll_notif_input = $('#payroll_notif'),
             form_parent = $(this).parent().parent('form');
             e.preventDefault();
             if (payroll_amount_input.val().trim() === "") {
@@ -56,9 +63,10 @@ $(document).ready(function () {
         $.ajax({
             url: 'patientAjax.php',
             type: 'POST',
-            data: {'name': nom, 'payroll_amount': payroll_amount_input.val().trim()},
+            data: {'name': nom, 'payroll_amount': payroll_amount_input.val().trim(), 'notif': payroll_notif_input.val().trim()},
             dataType: 'json',
             success: function(data) {
+                console.log(data);
                 if (data.status === 200) {
                     location.reload();
                 } else{
@@ -84,7 +92,6 @@ $(document).ready(function () {
             success: function(response) {
                 var data = response.data;
                 detail_table_body.empty();
-                console.log(response.data);
                 for(i = 0; i < data.length; i += 1) {
                     detail_table_body.append('<tr>');
                     for (j = 0 ; j < 4; j += 1) {

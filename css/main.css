@@ -88,6 +88,14 @@ nav.navbar-default .navbar-brand {
     cursor: pointer;
     background-color: #fff9e0;
 }
+
+.table.tab-patients>thead>tr>th, .tab-patients {
+    text-align: center;
+}
+.table.tab-patients>tbody>tr>td:nth-of-type(4) {
+    color: red;
+    font-weight: bold;
+}
 /* Edit bootstrap style end */
 
 /* include my style start */

@@ -27,12 +27,12 @@ $patients = $stmt->fetchAll(PDO::FETCH_OBJ);
 	}
 	?>
 	 <div class="table-responsive">
-	 	<table class="table">
+	 	<table class="table tab-patients">
 	 		<thead class="text-center">
 	            <tr>
 	                <th>Nom</th>
 	                <th>Crédit</th>
-	                <th>Payment</th>
+	                <th>Versement</th>
 	                <th>Reste</th>
 	                <th>Action</th>
 	            </tr>
@@ -74,7 +74,13 @@ $patients = $stmt->fetchAll(PDO::FETCH_OBJ);
 		        <label for="payroll_amount" class="control-label">
 		        	Versement:
 		    	</label>
-		        <input type="number" name="payroll_amount" class="form-control" id="payroll_amount">
+		        <input type="number" name="payroll_amount" class="form-control next-input" id="payroll_amount">
+		      </div>
+					<div class="form-group">
+		        <label for="payroll_amount" class="control-label">
+		        	Notification:
+		    	</label>
+					<input type="text" name="notif" class="form-control next-input" id="payroll_notif">
 		      </div>
 		      <div class="modal-footer">
 			    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -100,17 +106,14 @@ $patients = $stmt->fetchAll(PDO::FETCH_OBJ);
 		 		<thead class="text-center">
 		            <tr>
 		                <th>Crédit</th>
-		                <th>Payment</th>
-		                <th>date</th>
+		                <th>Versement</th>
 		                <th>Notification</th>
+		                <th>Date</th>
 		            </tr>
 		        </thead>
 		        <tbody>
 		        	<tr>
-		        		<td>hello</td>
-		        		<td>hello</td>
-		        		<td>hello</td>
-		        		<td>hello</td>
+		        		
 		        	</tr>
 	        	</tbody>
 	 		</table>	
