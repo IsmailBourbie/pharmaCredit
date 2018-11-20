@@ -23,12 +23,6 @@ $stmt = $db->prepare('SELECT clients.*, (clients.credit_amount - clients.payroll
 if ($stmt->execute()) {
 	$more_100 = $stmt->fetchAll(PDO::FETCH_OBJ);
 }
-// var_dump($general_stats);
-// echo('<br>');
-// var_dump($top_rest);
-// echo('<br>');
-// var_dump($more_100);
-// die();
  ?>
 <div class="main-lg">
 	<div>
@@ -51,11 +45,11 @@ if ($stmt->execute()) {
     					</tr>
     					<tr>
     						<td class="h4">Crédit Totale</td>
-    						<td><?=$general_stats->all_credit?></td>
+    						<td><?=number_format((float)$general_stats->all_credit, 2, '.', ' ')?></td>
     					</tr>
     					<tr>
     						<td class="h4">Reste Total</td>
-    						<td><?=$general_stats->all_rest?></td>
+    						<td><?=number_format((float)$general_stats->all_rest, 2, '.', ' ')?></td>
     					</tr>
     				</tbody>
     			</table>
@@ -76,9 +70,9 @@ if ($stmt->execute()) {
     					<?php foreach($top_rest as $r):?>
     						<tr class="linked" data-href="<?=URL_ROOT . 'patients.php?q=' . $r->nom?>">
     							<td><?=$r->nom?></td>
-    							<td><?=$r->credit_amount?></td>
-    							<td><?=$r->payroll_amount?></td>
-    							<td><?=$r->rest?></td>
+    							<td><?=number_format((float)$r->credit_amount, 2, '.', ' ')?></td>
+    							<td><?=number_format((float)$r->payroll_amount, 2, '.', ' ')?></td>
+    							<td><?=number_format((float)$r->rest, 2, '.', ' ')?></td>
     						</tr>
     					<?php endforeach;?>
 	    				</tbody>
@@ -100,9 +94,9 @@ if ($stmt->execute()) {
     					<?php foreach($more_100 as $r):?>
     						<tr class="linked" data-href="<?=URL_ROOT . 'patients.php?q=' . $r->nom?>">
     							<td><?=$r->nom?></td>
-    							<td><?=$r->credit_amount?></td>
-    							<td><?=$r->payroll_amount?></td>
-    							<td><?=$r->rest?></td>
+    							<td><?=number_format((float)$r->credit_amount, 2, '.', ' ')?></td>
+    							<td><?=number_format((float)$r->payroll_amount, 2, '.', ' ')?></td>
+    							<td><?=number_format((float)$r->rest, 2, '.', ' ')?></td>
     						</tr>
     					<?php endforeach;?>
 	    				</tbody>
