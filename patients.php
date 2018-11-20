@@ -41,9 +41,9 @@ $patients = $stmt->fetchAll(PDO::FETCH_OBJ);
         	<?php foreach($patients as $patient):?>
 	        	<tr>
 	        		<td><?=ucfirst($patient->nom)?></td>
-	        		<td><?=$patient->credit_amount?></td>
-	        		<td><?=$patient->payroll_amount?></td>
-	        		<td><?=$patient->rest?></td>
+	        		<td><?=number_format((float)$patient->credit_amount, 2, '.', ' ')?></td>
+	        		<td><?=number_format((float)$patient->payroll_amount, 2, '.', ' ')?></td>
+	        		<td><?=number_format((float)$patient->rest, 2, '.', ' ')?></td>
 	        		<td>
 	        			<button class="btn btn-info detail-btn" data-toggle="modal" data-target="#detail-modal">Detail</button>
 	        			<button class="btn btn-success verser-btn" data-toggle="modal" data-target="#verser-modal">Verser</button>
