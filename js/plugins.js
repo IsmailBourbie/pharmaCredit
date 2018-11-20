@@ -98,6 +98,12 @@ $(document).ready(function () {
         });
     });
 
+    // on click credit button on patients page;
+    $('.credit-btn').on('click', function() {
+        var nom = $(this).parent().siblings('td').eq(0).text();
+        console.log(nom);
+    });
+
     // buldin key shortcut
 
     $(document).keydown(function(e) {

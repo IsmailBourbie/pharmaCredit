@@ -110,6 +110,10 @@ body {
     width: 50%;
 }
 
+.main#patients {
+    width: 70%;
+}
+
 .main>h3 {
     margin-bottom: 40px;
 }

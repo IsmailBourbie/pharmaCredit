@@ -18,7 +18,7 @@ $stmt->bindValue(':q', $q, PDO::PARAM_STR);
 $stmt->execute();
 $patients = $stmt->fetchAll(PDO::FETCH_OBJ);
  ?>
-<div class="main">
+<div class="main" id="patients">
 	<?php
 	if (empty($patients)) {
 		echo "<div class='alert alert-info alert-custom'>";
@@ -47,6 +47,7 @@ $patients = $stmt->fetchAll(PDO::FETCH_OBJ);
 	        		<td>
 	        			<button class="btn btn-info detail-btn" data-toggle="modal" data-target="#detail-modal">Detail</button>
 	        			<button class="btn btn-success verser-btn" data-toggle="modal" data-target="#verser-modal">Verser</button>
+	        			<button class="btn btn-danger credit-btn">Crédit</button>
 	        		</td>
 	        	</tr>
 	        <?php endforeach;?>
