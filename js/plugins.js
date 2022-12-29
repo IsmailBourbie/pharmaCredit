@@ -28,6 +28,12 @@ $(document).ready(function () {
         }
     });
 
+    $('#payroll_notif').keydown(function (e) {
+        // if the key is enter key 
+         if (e.which === 13) {
+            $("#confirm-payroll").trigger("click");
+        }
+    });
     // on click verser button
     $('.verser-btn').on('click', function() {
         var nom = $(this).parent().siblings('td').eq(0).text();
@@ -47,9 +53,9 @@ $(document).ready(function () {
     $('#confirm-payroll').click(function(e) {
         var nom = $('#patient_name').val().trim(),
             payroll_amount_input = $('#payroll_amount'),
+            payroll_notif_input = $('#payroll_notif'),
             form_parent = $(this).parent().parent('form');
             e.preventDefault();
-            console.log(form_parent);
             if (payroll_amount_input.val().trim() === "") {
                 alert('Versement vide');
                 return false;
@@ -57,12 +63,12 @@ $(document).ready(function () {
         $.ajax({
             url: 'patientAjax.php',
             type: 'POST',
-            data: {'name': nom, 'payroll_amount': payroll_amount_input.val().trim()},
+            data: {'name': nom, 'payroll_amount': payroll_amount_input.val().trim(), 'notif': payroll_notif_input.val().trim()},
             dataType: 'json',
             success: function(data) {
-                console.log(data.status);
+                console.log(data);
                 if (data.status === 200) {
-                    form_parent.siblings('.alert').attr('class', 'alert alert-success').show();
+                    location.reload();
                 } else{
                     form_parent.siblings('.alert').attr('class', 'alert alert-danger')
                                   .text("Something wrong try again!").show();
@@ -86,7 +92,6 @@ $(document).ready(function () {
             success: function(response) {
                 var data = response.data;
                 detail_table_body.empty();
-                console.log(response.data);
                 for(i = 0; i < data.length; i += 1) {
                     detail_table_body.append('<tr>');
                     for (j = 0 ; j < 4; j += 1) {
@@ -96,6 +101,23 @@ $(document).ready(function () {
                 }
             }
         });
+    });
+
+    // on click credit button on patients page;
+    $('.credit-btn').on('click', function() {
+        var nom = $(this).parent().siblings('td').eq(0).text();
+        $.ajax({
+            url: 'patientAjax.php',
+            type: 'POST',
+            data: {'name': nom, 'new_credit': 'true'},
+            dataType: 'json',
+            success: function(response) {
+                if(response.status === 200) {
+                    location.href = response.go_to;
+                }
+            }
+        });
+        console.log(nom);
     });
 
     // buldin key shortcut

@@ -31,13 +31,13 @@ if (isset($_SESSION['success'])) {
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
                 </span>
-                <input type="number" name="credit" class="form-control next-input" placeholder="Montant de crédit*" required>
+                <input type="number" name="credit" step="0.01" class="form-control next-input" placeholder="Montant de crédit*" required>
             </div>
             <div class="input-group">
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                 </span>
-                <input type="number" name="payment" class="form-control next-input" placeholder="Montant versé">
+                <input type="number" name="payment" step="0.01" class="form-control next-input" placeholder="Montant versé">
             </div>
             <div class="input-group">
                 <span class="input-group-addon">
