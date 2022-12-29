@@ -9,7 +9,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
     $err = [];
 
     $data = [
-        'name' =>  filter_var(strtolower(trim($_POST['name'])), FILTER_SANITIZE_STRING),
+        'name' =>  htmlentities(strtolower(trim($_POST['name']))),
         'credit' =>  filter_var(trim($_POST['credit']), FILTER_VALIDATE_FLOAT),
         'payment' =>  trim($_POST['payment']),
         'notif' =>  trim($_POST['notif'])
@@ -50,9 +50,9 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
                                 WHERE nom = :name;
                 INSERT INTO tracing VALUES(NULL, :name, :credit, :payment, :notif, CURRENT_TIMESTAMP)";
         $stmt = $db->prepare($sql);
-        $stmt->bindValue(':payment', $data['payment'], PDO::PARAM_STR);
+        $stmt->bindValue(':payment', floatval($data['payment']), PDO::PARAM_STR);
         $stmt->bindValue(':name', $data['name'], PDO::PARAM_STR);
-        $stmt->bindValue(':credit', $data['credit'], PDO::PARAM_STR);
+        $stmt->bindValue(':credit', floatval($data['credit']), PDO::PARAM_STR);
         $stmt->bindValue(':notif', $data['notif'], PDO::PARAM_STR);
         if ($stmt->execute()){
             $_SESSION['success'] = 'Crédit ajouter';
@@ -64,4 +64,3 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
     echo $_SERVER["REQUEST_METHOD"];
 
 }
-

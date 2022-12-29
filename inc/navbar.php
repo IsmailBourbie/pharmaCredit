@@ -16,12 +16,12 @@
                     <a href="#" id="Nouveau" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Nouveau <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="<?=URL_ROOT?>addClient.php">Patient</a></li>
-                        <li><a href="<?=URL_ROOT?>">Crédit</a></li>
+                        <li><a href="/addClient.php">Patient</a></li>
+                        <li><a href="/">Crédit</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="<?=URL_ROOT?>statistiques.php" id="Statistiques">Statistiques</a>
+                    <a href="/statistiques.php" id="Statistiques">Statistiques</a>
                 </li>
             </ul>
         </div>
